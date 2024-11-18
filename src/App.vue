@@ -1,30 +1,45 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="grid-container">
+    <CosLaw />
+    <Asymptote />
+    <PiApprox />
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<script>
+import CosLaw from './components/CosLaw.vue';
+import Asymptote from './components/Asymptote.vue';
+import PiApprox from './components/PiApprox.vue';
+
+export default {
+  name: 'App',
+  components: {
+    CosLaw,
+    Asymptote,
+    PiApprox
+  }
+};
+</script>
+
+<style>
+body {
+  background-color: rgb(255, 213, 225);
+  color: #000000;
+  padding: 20px;
+  gap: 20px;
+  padding: 20px;
+  margin-bottom: 30px;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);  
+  gap: 5%; 
+  width: 80%; 
+  margin: 0 auto;  
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.grid-container > * {
+  margin-bottom: 20px;
 }
 </style>
