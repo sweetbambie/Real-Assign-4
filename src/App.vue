@@ -19,5 +19,6 @@ import PiApprox from './components/PiApprox.vue';
   gap: 5%;  
   width: 80%; 
   margin: 0 auto;  
+  grid-auto-rows: 1fr;
 }
 </style>
