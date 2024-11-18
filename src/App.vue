@@ -1,18 +1,7 @@
-<script>
+<script setup>
 import CosLaw from './components/CosLaw.vue';
 import Asymptote from './components/Asymptote.vue';
 import PiApprox from './components/PiApprox.vue';
-
-// import './style.css';
-
-export default {
-  name: 'App',
-  components: {
-    CosLaw,
-    Asymptote,
-    PiApprox
-  }
-};
 </script>
 
 <template>
