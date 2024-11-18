@@ -1,45 +1,34 @@
-<template>
-    <div class="gride-container">
-        <div id="PiApprox" class="dform">
-        <h2 class="header">Gregory-Leibniz Pi Approximation</h2>
-        <form>
-            <label for="nvalue">n Value:</label><br>
-            <input class="number" v-model="nvalue" id="Nvalue" name="nvalue" type="number"><br>
-    
-            <label for="piapprox">Pi Approximation (Result):</label><br>
-            <input class="number" v-model="piapprox" id="piapprox" name="piapprox" readonly><br>
-    
-            <button class="Calculate" type="button" @click="piApprox">Calculate</button>
-        </form>
-        </div>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'PiApprox',
-    data() {
-      return {
-        nvalue: null,  
-        piapprox: null, 
-      };
-    },
-    methods: {
-      piApprox() {
-        const n = parseFloat(this.nvalue);
-        let pi = 0;
-  
-        for (let i = 0; i <= n; i++) {
-          pi += Math.pow(-1, i) / ((2 * i) + 1);
-        }
-  
-        this.piapprox = (pi * 4);
+<script setup>
+import { ref } from 'vue';
+
+const nValue = ref(null);
+const piApproxValue = ref(null);
+
+function piApprox() {
+    const n = parseFloat(nValue.value);
+    let pi = 0;
+
+    for (let i = 0; i <= n; i++) {
+        pi += Math.pow(-1, i) / ((2 * i) + 1);
       }
+      piApproxValue.value = (pi * 4);
     }
-  };
-  </script>
+</script>
+
+<template>
+    <div id="PiApprox" class="dform">
+    <h2 class="header">Gregory-Leibniz Pi Approximation</h2>
+    <form @submit.prevent="piApprox">
+        <label for="nvalue">n Value:</label><br>
+        <input class="number" v-model="nValue" id="Nvalue" name="nvalue" type="number"><br> 
+        <label for="piapprox">Pi Approximation (Result):</label><br>
+        <input class="number" v-model="piApproxValue" id="pi" name="pi" readonly><br>
+        <button class="Calculate" type="button" @click="piApprox">Calculate</button>
+    </form>
+    </div>
+</template>
   
-  <style scoped>
+<style scoped>
   .dform {
     border: 1px solid #ccc;
     border-radius: 5px;

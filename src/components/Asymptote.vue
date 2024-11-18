@@ -1,82 +1,73 @@
+<script setup>
+import { ref } from 'vue';
+
+const mvalue = ref(null);
+const nvalue = ref(null);
+const atype = ref('');
+
+function asymptote() {
+  const m = parseFloat(mvalue.value);
+  const n = parseFloat(nvalue.value);
+
+  if (m === n) {
+    atype.value = "The asymptote is horizontal.";
+  } else if (n > m) {
+    atype.value = "The asymptote is the x-axis.";
+  } else if (m > n) {
+    const difference = m - n;
+    switch (difference) {
+      case 1:
+        atype.value = "Linear";
+        break;
+      case 2:
+        atype.value = "Quadratic";
+        break;
+      case 3:
+        atype.value = "Cubic";
+        break;
+      case 4:
+        atype.value = "Quartic";
+        break;
+      case 5:
+        atype.value = "Quintic";
+        break;
+      case 6:
+        atype.value = "Sextic";
+        break;
+      case 7:
+        atype.value = "Septic";
+        break;
+      case 8:
+        atype.value = "Octic";
+        break;
+      case 9:
+        atype.value = "Nonic";
+        break;
+      case 10:
+        atype.value = "Decic";
+        break;
+      default:
+        atype.value = "Undefined asymptote type.";
+        break;
+    }
+  }
+}
+</script>
+
 <template>
-    <div id="Asymptote" class="dform">
+  <div id="Asymptote" class="dform">
     <h2 class="header">Asymptote Finder</h2>
     <form @submit.prevent="asymptote">
         <label for="mvalue">m Value:</label><br>
-        <input class="number" v-model="mvalue" id="mvalue" name="mvalue" type="number" /><br>
-        
+        <input class="number" v-model="mvalue" id="mvalue" name="mvalue" type="number" required /><br>
         <label for="nvalue">n Value:</label><br>
-        <input class="number" v-model="nvalue" id="nvalue" name="nvalue" type="number" /><br>
-        
+        <input class="number" v-model="nvalue" id="nvalue" name="nvalue" type="number" required /><br>
         <label for="atype">Asymptote Type (Result):</label><br>
-        
-        <input class="number" v-model="atype" id="atype" name="atype" readonly /><br>
+        <input class="number" v-model="atype" id="atype" name="atype" type="text" readonly /><br>
         <button class="Calculate" type="submit">Calculate</button>
     </form>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'Asymptote',
-    data() {
-      return {
-        mvalue: null,  
-        nvalue: null, 
-        atype: '',    
-      };
-    },
-    methods: {
-      asymptote() {
-        const m = parseFloat(this.mvalue);
-        const n = parseFloat(this.nvalue);
-
-        if (m === n) {
-          this.atype = "The asymptote is horizontal";
-        } else if (n > m) {
-          this.atype = "The asymptote is the x-axis";
-        } else if (m > n) {
-          const difference = m - n;
-          switch (difference) {
-            case 1:
-              this.atype = "Linear";
-              break;
-            case 2:
-              this.atype = "Quadratic";
-              break;
-            case 3:
-              this.atype = "Cubic";
-              break;
-            case 4:
-              this.atype = "Quartic";
-              break;
-            case 5:
-              this.atype = "Quintic";
-              break;
-            case 6:
-              this.atype = "Sextic";
-              break;
-            case 7:
-              this.atype = "Septic";
-              break;
-            case 8:
-              this.atype = "Octic";
-              break;
-            case 9:
-              this.atype = "Nonic";
-              break;
-            case 10:
-              this.atype = "Decic";
-              break;
-            default:
-              this.atype = "Undefined";
-              break;
-          }
-        }
-      },
-    },
-  };
-  </script>
+  </div>
+</template>
   
   <style scoped>
   .dform {
@@ -88,7 +79,6 @@
     margin-top: 3%;
     height: 100%;
     color: black;
-    margin-bottom: 30px;
   }
 
   .header {
